@@ -54,14 +54,16 @@
   var audio = new Audio(SRC_PREFIX + 'assets/audio/hometown-buddy.mp3');
   audio.loop = true;
   audio.preload = 'auto';
+  audio.autoplay = true;
 
-  var saved = parseFloat(localStorage.getItem('hb-song-time'));
+  // 刷新同一标签页时续播；新开网页从头播
+  var saved = parseFloat(sessionStorage.getItem('hb-song-time'));
   if (!isNaN(saved)) {
     audio.currentTime = saved;
   }
   setInterval(function () {
     if (!audio.paused) {
-      localStorage.setItem('hb-song-time', audio.currentTime);
+      sessionStorage.setItem('hb-song-time', audio.currentTime);
     }
   }, 1000);
 
@@ -93,10 +95,11 @@
   function toggle() {
     if (audio.paused) {
       play();
-      localStorage.removeItem('hb-song-muted');
+      sessionStorage.removeItem('hb-song-muted');
     } else {
       audio.pause();
-      localStorage.setItem('hb-song-muted', '1');
+      // 只在本次浏览里记住"停止"；下次打开网页照样自动播
+      sessionStorage.setItem('hb-song-muted', '1');
       render();
     }
   }
@@ -115,20 +118,40 @@
   audio.addEventListener('play', render);
   audio.addEventListener('pause', render);
 
-  // 自动播放；用户主动停止过就不再自动播
-  if (localStorage.getItem('hb-song-muted') !== '1') {
-    play();
-    var resume = function () {
-      if (audio.paused && localStorage.getItem('hb-song-muted') !== '1') {
-        play();
+  // 打开网页立刻自动播放；浏览器拦截时，抓住用户最早的任何动作
+  // （点击/触摸/滚动/按键）马上开播。本次浏览里按过停止才不自动播。
+  var RESUME_EVENTS = [
+    'pointerdown', 'pointerup', 'touchstart', 'touchend',
+    'click', 'keydown', 'wheel', 'scroll'
+  ];
+
+  function tryAutoplay() {
+    if (!audio.paused || sessionStorage.getItem('hb-song-muted') === '1') {
+      return;
+    }
+    audio.play().then(function () {
+      render();
+      RESUME_EVENTS.forEach(function (ev) {
+        window.removeEventListener(ev, tryAutoplay);
+      });
+    }).catch(function () {
+      /* 仍被拦截，等下一个动作再试 */
+    });
+  }
+
+  if (sessionStorage.getItem('hb-song-muted') !== '1') {
+    tryAutoplay();
+    if (audio.readyState < 3) {
+      audio.addEventListener('canplay', tryAutoplay);
+    }
+    RESUME_EVENTS.forEach(function (ev) {
+      window.addEventListener(ev, tryAutoplay, { passive: true });
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) {
+        tryAutoplay();
       }
-      document.removeEventListener('click', resume);
-      document.removeEventListener('touchstart', resume);
-      document.removeEventListener('keydown', resume);
-    };
-    document.addEventListener('click', resume);
-    document.addEventListener('touchstart', resume);
-    document.addEventListener('keydown', resume);
+    });
   }
 
   /* ---------- KTV 歌词 ---------- */
