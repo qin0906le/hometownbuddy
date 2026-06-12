@@ -4,123 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hometown Buddy · 一世人的兄弟</title>
-  <meta name="description" content="从巴冬渔村一起长大的友谊——记录我们从小玩到大、不曾散的故事。">
+  <meta name="description" content="从巴冬渔村一起长大的友谊——一首歌，一班兄弟，一路滚到底的故事。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="brand" href="index.html">Hometown Buddy<span>巴冬兄弟</span></a>
-    <div class="links">
-      <a href="index.html" class="active">首页</a>
-      <a href="lyrics.html">主题曲</a>
-      <a href="posts/childhood.html">老故事</a>
-      <a href="about.html">关于我们</a>
+  <!-- 开场：全屏照片 + 歌名 + 播放 -->
+  <section class="opening">
+    <div class="opening-inner">
+      <p class="opening-eyebrow">从巴冬渔村 · MUAR · 一起长大</p>
+      <h1>HOMETOWN<br>BUDDY</h1>
+      <p class="opening-sub">一世人的兄弟 · 这是我们的歌</p>
+      <button class="play-big" id="hero-play">▶&nbsp; 播放我们的歌</button>
     </div>
-  </nav>
+    <div class="scroll-hint">往下滚动，听歌看故事 ↓</div>
+  </section>
 
-  <header class="hero">
-    <div class="hero-text">
-      <span class="eyebrow">FROM 巴冬渔村 · MUAR</span>
-      <h1>从小玩到大，<em>不曾散</em>。</h1>
-      <p class="tagline">
-        小时候赤脚跑过沙滩，骑着脚车白天到日落；长大后有人去了 KL，有人当了老板，
-        有人孩子都会飞跑了——但 WhatsApp 一响，还是那句：<strong>"Bro，今晚去哪里？"</strong>
-        这里记录我们这班兄弟的故事。
+  <!-- 第一章：童年 -->
+  <section class="chapter reveal">
+    <div class="chapter-text">
+      <span class="chapter-no">第一章 · 童年</span>
+      <h2>小时候赤脚跑过，<br>海风吹过咸咸的温度。</h2>
+      <p>
+        你讲"走去玩咯"，我讲"steady"——一句话就是一整个下午的约定。
+        骑着脚车白天到日落，链条掉了就两个人挤一辆；
+        偷偷去抓鱼，回家被阿母骂够够，骂完还是留一碗饭给你。
       </p>
-      <a class="btn btn-primary" href="#posts">看看老故事</a>
-      <a class="btn btn-ghost" href="lyrics.html">读主题曲歌词</a>
+      <p class="chapter-punch">以前什么都没有，快乐却特别多。</p>
     </div>
-    <figure class="hero-photo">
+    <figure class="chapter-photo tilt-left">
       <img src="assets/img/hero.jpg" alt="夕阳下，一班兄弟的手围成圈，沙地上用贝壳拼出 HOMETOWN BUDDY">
       <figcaption>夕阳下的沙滩，我们用贝壳拼出了自己的名字。</figcaption>
     </figure>
-  </header>
+  </section>
 
-  <section class="lyric-banner">
+  <!-- 副歌横幅 -->
+  <section class="chorus-banner reveal">
     <blockquote>
-      海风轻轻吹过 Old Hometown，<br>
-      我们的故事 <em>never slowing down</em>。<br>
-      从小玩到大 不曾散，兄弟的名字永远放心上。
-      <cite>——《Hometown Buddy》主题曲</cite>
+      Hometown Buddy，<em>一世人的兄弟</em>。<br>
+      虽然现在大家忙，但一句 "bro 最近好吗"，感情还是不会变。
     </blockquote>
   </section>
 
-  <section class="section gallery" id="gallery">
-    <div class="section-head">
-      <h2>相聚时刻</h2>
-      <p>虽然大家越来越忙，但每次聚在一起，还是像从前。</p>
+  <!-- 第二章：Lim Teh -->
+  <section class="chapter flip reveal">
+    <div class="chapter-text">
+      <span class="chapter-no">第二章 · 长大后</span>
+      <h2>日子慢慢把我们带走，<br>但 WhatsApp 一响还是——</h2>
+      <p>
+        群里可以安静一个礼拜，但只要有人丢出一句"走咯"，五分钟内全员冒出来。
+        打几玩 game 吹水到半夜，老地方 kopitiam Lim Teh 又聊一整夜——
+        聊的还是那几件事：谁骑脚车冲进沟渠、谁抓鱼抓到水蛇吓到哭。
+        讲了几百遍，每一遍还是有人笑到拍桌子。
+      </p>
+      <p class="chapter-punch">临走前照例那句："下个礼拜，照旧？"——照旧。</p>
     </div>
-    <div class="photo-grid">
-      <figure class="photo-frame">
-        <img src="assets/img/buddies-wedding.jpg" alt="婚礼上一班兄弟姐妹穿着紫色礼服在草地上围着新人合照">
-        <figcaption>
-          <strong>兄弟的大日子 · 全员紫色出动。</strong>
-          有人结婚了——婚礼那天，这班人一个都没缺席。
-        </figcaption>
-      </figure>
-      <figure class="photo-frame">
-        <img src="assets/img/buddies-dinner.jpg" alt="一班兄弟和家人围着圆桌聚餐合照，有人比着爱心">
-        <figcaption>
-          <strong>大圆桌 · 全员到齐。</strong>
-          有人去了 KL，有人当了老板，有人连孩子都带来了——但坐下来，还是这班兄弟。
-        </figcaption>
-      </figure>
-    </div>
+    <figure class="chapter-photo tilt-right">
+      <img src="assets/img/buddies-wedding.jpg" alt="婚礼上一班兄弟姐妹穿着紫色礼服在草地上围着新人合照">
+      <figcaption>兄弟的大日子，全员紫色出动——一个都没缺席。</figcaption>
+    </figure>
   </section>
 
-  <main class="section" id="posts">
+  <!-- 第三章：重聚 -->
+  <section class="chapter reveal">
+    <div class="chapter-text">
+      <span class="chapter-no">第三章 · 重聚</span>
+      <h2>有人去 KL，有人当老板，<br>有人孩子都会飞跑。</h2>
+      <p>
+        当老板的抢着买单，被按回椅子上："在这里没有老板，只有兄弟。"
+        在 KL 做工的被笑有 KL 腔，他用最地道的巴冬福建话回敬一句，全场笑翻。
+        孩子们在旁边追来追去，就像当年的我们。
+      </p>
+      <p class="chapter-punch">虽然大家越来越忙，但每次聚在一起，还是像从前。</p>
+    </div>
+    <figure class="chapter-photo tilt-left">
+      <img src="assets/img/buddies-dinner.jpg" alt="一班兄弟和家人围着圆桌聚餐合照，有人比着爱心">
+      <figcaption>大圆桌 · 全员到齐——坐下来，还是这班兄弟。</figcaption>
+    </figure>
+  </section>
+
+  <!-- Bridge 横幅 -->
+  <section class="chorus-banner deep reveal">
+    <blockquote>
+      海风轻轻吹过 Old Hometown，我们的故事 <em>never slowing down</em>。<br>
+      从小玩到大 不曾散，兄弟的名字永远放心上。
+    </blockquote>
+  </section>
+
+  <!-- 时间轴 -->
+  <section class="timeline-sec reveal">
     <div class="section-head">
-      <h2>老故事 · Blog</h2>
-      <p>日子慢慢把我们带走，但故事要留下来。</p>
+      <h2>我们的故事线</h2>
     </div>
+    <ol class="timeline">
+      <li>
+        <h3>巴冬渔村的童年</h3>
+        <p>赤脚的沙滩、脚车、抓鱼，和骂够够的阿母。</p>
+      </li>
+      <li>
+        <h3>各奔东西</h3>
+        <p>有人去 KL，有人接家里的生意，有人去了更远的地方。</p>
+      </li>
+      <li>
+        <h3>兄弟的大日子</h3>
+        <p>有人结婚了——婚礼那天，这班人一个都没缺席。</p>
+      </li>
+      <li>
+        <h3>大圆桌重聚</h3>
+        <p>带着家人和孩子回来，坐下来还是这班兄弟。</p>
+      </li>
+      <li>
+        <h3>未来</h3>
+        <p>等到大家头发变白，回到巴冬再相聚——还是那句。</p>
+      </li>
+    </ol>
+  </section>
 
-    <div class="post-grid">
-      <article class="post-card">
-        <span class="tag">童年 · 渔村</span>
-        <h3><a href="posts/childhood.html">赤脚跑过的沙滩：巴冬渔村的童年</a></h3>
-        <p>
-          海风吹过咸咸的温度，你讲"走去玩咯"，我讲"steady"。
-          骑着脚车从白天到日落，偷偷去抓鱼被阿母骂够够——以前什么都没有，快乐却特别多。
-        </p>
-        <div class="meta">
-          <span>2026-06-12</span>
-          <a class="read-more" href="posts/childhood.html">读全文 →</a>
-        </div>
-      </article>
-
-      <article class="post-card">
-        <span class="tag">日常 · Lim Teh</span>
-        <h3><a href="posts/limteh.html">WhatsApp 一响：Lim Teh 又聊一整夜</a></h3>
-        <p>
-          虽然现在大家忙，见面越来越少，但群里一句"走咯"，
-          打几玩 game 吹水到半夜，去 kopitiam Lim Teh 又是一整夜——感情还是不会变。
-        </p>
-        <div class="meta">
-          <span>2026-06-12</span>
-          <a class="read-more" href="posts/limteh.html">读全文 →</a>
-        </div>
-      </article>
-
-      <article class="post-card">
-        <span class="tag">成长 · 重聚</span>
-        <h3><a href="posts/reunion.html">有人去 KL，有人当老板：几十年后再相聚</a></h3>
-        <p>
-          有人已经发财很多，有人结婚了，有人孩子都会飞跑了。
-          但每次聚在一起还是像从前——等到大家头发变白，回到巴冬再相聚。
-        </p>
-        <div class="meta">
-          <span>2026-06-12</span>
-          <a class="read-more" href="posts/reunion.html">读全文 →</a>
-        </div>
-      </article>
+  <!-- KTV 歌词 -->
+  <section class="ktv-sec reveal" id="lyrics">
+    <div class="section-head">
+      <h2>跟着唱</h2>
+      <p>歌词跟着歌走，点任何一句可以跳到那里。</p>
     </div>
-  </main>
+    <div class="ktv-box" id="ktv-box"></div>
+  </section>
 
-  <footer>
-    <p class="foot-lyric">Hometown Buddy，兄弟情没过期。</p>
-    <p>© 2026 Hometown Buddy · 从巴冬渔村一起长大的友谊</p>
-  </footer>
+  <!-- 结尾 -->
+  <section class="ending">
+    <p class="ending-small">等到以后大家头发变白，回到巴冬再相聚，还是那句——</p>
+    <p class="ending-big">"Bro～ 今晚去哪里？"</p>
+    <a class="btn-wa" href="https://wa.me/?text=%E8%B5%B0%E5%92%AF%EF%BC%81%E4%BB%8A%E6%99%9A%20Lim%20Teh%EF%BC%9F" target="_blank" rel="noopener">
+      在 WhatsApp 丢一句"走咯"
+    </a>
+    <p class="ending-foot">© 2026 Hometown Buddy · 从巴冬渔村一起长大的友谊 · 兄弟情没过期</p>
+  </section>
 
   <script src="js/player.js" data-root=""></script>
 </body>
