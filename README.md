@@ -26,13 +26,16 @@
 - 文案保留马来西亚华语特色：Lim Teh、吹水、脚车、阿母、steady、骂够够
 - 纯静态（HTML/CSS/JS），无构建步骤；推送即由 GitHub Actions 自动部署
 
-## 替换合照
+## 替换照片
 
-两张合照目前是占位图，在 GitHub 网页进入 `assets/img/` → Add file → Upload files，
+在 GitHub 网页进入 `assets/img/` → Add file → Upload files，
 按以下文件名上传覆盖即可自动上线：
 
-- `assets/img/buddies-wedding.jpg` — 婚礼紫色全员合照
-- `assets/img/buddies-dinner.jpg` — 圆桌聚餐合照
+- `assets/img/buddies-trip.jpg` — Koh Lipe 海岛旅行合照（占位中）
+- `assets/img/buddies-groomsmen.jpg` — 接亲粉色兄弟团合照（占位中）
+- `assets/img/buddies-prewedding.jpg` — 新人婚纱照（占位中）
+- `assets/img/buddies-dinner.jpg` — 圆桌聚餐合照（已有旧版，上传新版覆盖）
+- `assets/img/buddies-wedding.jpg` — 婚礼紫色全员合照（已就位）
 
 ## 本地预览
 
