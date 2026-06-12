@@ -14,7 +14,7 @@
 ## 页面结构
 
 ```
-index.html            首页：主视觉 + 歌词横幅 + 博文列表
+index.html            首页：主视觉 + 歌词横幅 + 相聚时刻合照 + 博文列表
 lyrics.html           主题曲完整歌词（按 Verse / Chorus / Bridge 排版）
 about.html            关于我们
 posts/
@@ -22,8 +22,21 @@ posts/
   limteh.html         WhatsApp 一响：Lim Teh 又聊一整夜
   reunion.html        有人去 KL，有人当老板：几十年后再相聚
 css/style.css         全站样式（夕阳沙滩主题）
-assets/img/           主视觉图片
+js/player.js          全站音乐播放器（自动播放主题曲，跨页面续播）
+assets/img/           主视觉与合照图片
+assets/audio/         主题曲音频 hometown-buddy.mp3
 ```
+
+## 背景音乐
+
+打开任意页面会自动播放主题曲（右下角有悬浮播放按钮）。
+浏览器拦截自动播放时，用户第一次点击页面即开始播放；
+播放进度记录在 localStorage，换页面不断歌；用户手动暂停后不再自动播。
+
+## 替换合照
+
+首页"相聚时刻"目前是占位图，把真实合照保存为
+`assets/img/buddies-dinner.jpg` 覆盖即可。
 
 ## 本地预览
 
