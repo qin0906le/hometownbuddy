@@ -35,8 +35,13 @@ assets/audio/         主题曲音频 hometown-buddy.mp3
 
 ## 替换合照
 
-首页"相聚时刻"目前是占位图，把真实合照保存为
-`assets/img/buddies-dinner.jpg` 覆盖即可。
+首页"相聚时刻"目前是占位图，把真实照片按以下文件名覆盖即可
+（GitHub 网页上进入 `assets/img/` → Add file → Upload files）：
+
+- `assets/img/buddies-wedding.jpg` — 婚礼紫色全员合照
+- `assets/img/buddies-dinner.jpg` — 圆桌聚餐合照
+
+推送后 GitHub Actions 会自动重新部署上线。
 
 ## 本地预览
 
