@@ -202,6 +202,64 @@
     });
   }
 
+  /* ---------- 背景/内嵌视频：手机也能自动播 ----------
+     移动浏览器（尤其离屏视频）常拒绝自动播放。这里强制设为静音 +
+     playsinline，滚到视野内时主动 play()，离开时暂停省电；并在用户
+     第一次触屏/点击时再兜底播一次。 */
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video'));
+  vids.forEach(function (v) {
+    v.muted = true;
+    v.defaultMuted = true;
+    v.setAttribute('muted', '');
+    v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.removeAttribute('controls');
+  });
+
+  function playVid(v) {
+    var p = v.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(function () {});
+    }
+  }
+
+  function kickAllVisible() {
+    vids.forEach(function (v) {
+      var r = v.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) {
+        playVid(v);
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var vio = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            playVid(entry.target);
+          } else {
+            entry.target.pause();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    vids.forEach(function (v) {
+      vio.observe(v);
+    });
+  } else {
+    vids.forEach(playVid);
+    window.addEventListener('scroll', kickAllVisible, { passive: true });
+  }
+
+  // 兜底：用户第一次任何动作时，把当前可见的视频都踢一脚
+  ['pointerdown', 'touchstart', 'click', 'scroll'].forEach(function (ev) {
+    window.addEventListener(ev, kickAllVisible, { passive: true });
+  });
+  kickAllVisible();
+
   /* ---------- 滚动浮现 ---------- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(

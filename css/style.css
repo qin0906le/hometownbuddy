@@ -241,7 +241,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(rgba(20, 36, 46, 0.66), rgba(20, 36, 46, 0.74));
+  background: linear-gradient(rgba(20, 36, 46, 0.4), rgba(20, 36, 46, 0.55));
 }
 
 .chorus-banner blockquote {
@@ -251,6 +251,10 @@ body {
   font-weight: 600;
   line-height: 2.1;
   letter-spacing: 0.04em;
+}
+
+.chorus-banner.deep blockquote {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7), 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
 .chorus-banner em {
