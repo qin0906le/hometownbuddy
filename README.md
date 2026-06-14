@@ -33,6 +33,8 @@
 - `assets/video/beach-sunset.mp4` — 开场全屏：海边日落
 - `assets/video/cycling.mp4` — 第一章：骑脚车白天到日落
 - `assets/video/jetty.mp4` — Bridge 横幅背景：海边木桥 / 海风轻轻吹过
+- `assets/video/cny-reunion.mp4` — 回乡过年 2026 章节背景
+- `assets/video/karaoke.mp4` — KTV「跟着唱」段落：兄弟抢麦合唱
 
 每段视频都配了一张 `*-poster.jpg` 作为加载前的封面。
 
