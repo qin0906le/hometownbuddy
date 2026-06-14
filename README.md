@@ -26,15 +26,27 @@
 - 文案保留马来西亚华语特色：Lim Teh、吹水、脚车、阿母、steady、骂够够
 - 纯静态（HTML/CSS/JS），无构建步骤；推送即由 GitHub Actions 自动部署
 
+## 动态视频背景
+
+三段家乡实拍短视频（已压缩、去音轨、静音循环自动播）穿插在页面里：
+
+- `assets/video/beach-sunset.mp4` — 开场全屏：海边日落
+- `assets/video/cycling.mp4` — 第一章：骑脚车白天到日落
+- `assets/video/jetty.mp4` — Bridge 横幅背景：海边木桥 / 海风轻轻吹过
+
+每段视频都配了一张 `*-poster.jpg` 作为加载前的封面。
+
 ## 替换照片
 
 在 GitHub 网页进入 `assets/img/` → Add file → Upload files，
 按以下文件名上传覆盖即可自动上线：
 
-- `assets/img/buddies-trip.jpg` — Koh Lipe 海岛旅行合照（占位中）
-- `assets/img/buddies-groomsmen.jpg` — 接亲粉色兄弟团合照（占位中）
-- `assets/img/buddies-prewedding.jpg` — 新人婚纱照（占位中）
-- `assets/img/buddies-dinner.jpg` — 圆桌聚餐合照（已有旧版，上传新版覆盖）
+- `assets/img/buddies-departure.jpg` — 回乡 · Departure Hall（占位中）
+- `assets/img/buddies-homecoming-ride.jpg` — 回乡街头骑脚车（占位中）
+- `assets/img/buddies-trip.jpg` — Koh Lipe 海岛旅行合照（已就位）
+- `assets/img/buddies-groomsmen.jpg` — 接亲粉色兄弟团合照（已就位）
+- `assets/img/buddies-prewedding.jpg` — 新人婚纱照（已就位）
+- `assets/img/buddies-dinner.jpg` — 圆桌聚餐合照（已就位）
 - `assets/img/buddies-wedding.jpg` — 婚礼紫色全员合照（已就位）
 
 ## 本地预览

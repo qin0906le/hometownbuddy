@@ -45,11 +45,34 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background:
-    linear-gradient(rgba(20, 36, 46, 0.45), rgba(20, 36, 46, 0.62)),
-    url("../assets/img/hero.jpg") center / cover no-repeat;
+  background: var(--sea-dusk);
   color: var(--sand);
   padding: 2rem 6vw;
+  overflow: hidden;
+}
+
+/* 全屏视频背景 + 压暗遮罩，保证文字清晰 */
+.opening-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.opening::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(rgba(20, 36, 46, 0.42), rgba(20, 36, 46, 0.66));
+}
+
+.opening-inner,
+.opening .scroll-hint {
+  position: relative;
+  z-index: 2;
 }
 
 .opening-eyebrow {
@@ -162,15 +185,25 @@ body {
   margin: 0;
 }
 
-.chapter-photo img {
+.chapter-photo img,
+.chapter-video {
+  display: block;
   width: 100%;
   border-radius: 18px;
   border: 8px solid var(--paper);
   box-shadow: 0 24px 60px rgba(58, 47, 40, 0.25);
 }
 
-.tilt-left img { transform: rotate(-1.5deg); }
-.tilt-right img { transform: rotate(1.5deg); }
+.chapter-video {
+  aspect-ratio: 848 / 478;
+  object-fit: cover;
+  background: var(--sea-dusk);
+}
+
+.tilt-left img,
+.tilt-left .chapter-video { transform: rotate(-1.5deg); }
+.tilt-right img,
+.tilt-right .chapter-video { transform: rotate(1.5deg); }
 
 .chapter-photo figcaption {
   text-align: center;
@@ -181,19 +214,39 @@ body {
 
 /* ---------- 副歌横幅 ---------- */
 .chorus-banner {
+  position: relative;
   background: var(--sea-dusk);
   color: var(--sand);
   text-align: center;
   padding: 4rem 6vw;
+  overflow: hidden;
 }
 
 .chorus-banner.deep {
-  background:
-    linear-gradient(rgba(20, 36, 46, 0.82), rgba(20, 36, 46, 0.82)),
-    url("../assets/img/hero.jpg") center / cover fixed no-repeat;
+  padding: 6rem 6vw;
+}
+
+/* 横幅视频背景 + 压暗遮罩 */
+.banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.chorus-banner.deep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(rgba(20, 36, 46, 0.66), rgba(20, 36, 46, 0.74));
 }
 
 .chorus-banner blockquote {
+  position: relative;
+  z-index: 2;
   font-size: clamp(1.2rem, 2.6vw, 1.7rem);
   font-weight: 600;
   line-height: 2.1;
@@ -262,6 +315,44 @@ body {
 }
 
 .wedding-item figcaption {
+  text-align: center;
+  margin-top: 0.9rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- 回乡相册 ---------- */
+.homecoming-sec {
+  padding: 5rem 6vw;
+  background: var(--sand-deep);
+}
+
+.homecoming-grid {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.homecoming-item {
+  margin: 0;
+}
+
+.homecoming-item img {
+  width: 100%;
+  border-radius: 16px;
+  border: 7px solid var(--paper);
+  box-shadow: 0 18px 44px rgba(58, 47, 40, 0.22);
+  transition: transform 0.25s;
+}
+
+.homecoming-item:hover img {
+  transform: translateY(-6px);
+}
+
+.homecoming-item figcaption {
   text-align: center;
   margin-top: 0.9rem;
   font-size: 0.88rem;
