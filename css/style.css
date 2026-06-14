@@ -625,6 +625,43 @@ body {
   }
 }
 
+/* ---------- 视频"轻触播放"兜底按钮 ---------- */
+.video-tap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(20, 36, 46, 0.72);
+  border: 2px solid rgba(246, 237, 224, 0.7);
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.video-tap.show {
+  display: inline-flex;
+}
+
+.video-tap span {
+  font-size: 0.8rem;
+}
+
+/* 开场视频的提示放低一点，避开标题 */
+.opening .video-tap {
+  top: auto;
+  bottom: 5.5rem;
+}
+
 /* ---------- 悬浮音乐播放器 ---------- */
 .music-toggle {
   position: fixed;

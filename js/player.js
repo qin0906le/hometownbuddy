@@ -203,10 +203,12 @@
   }
 
   /* ---------- 背景/内嵌视频：手机也能自动播 ----------
-     移动浏览器（尤其离屏视频）常拒绝自动播放。这里强制设为静音 +
-     playsinline，滚到视野内时主动 play()，离开时暂停省电；并在用户
-     第一次触屏/点击时再兜底播一次。 */
+     iOS Safari 只把 touchend / click / keydown 当作"用户激活手势"
+     （scroll、touchstart 不算）；省电模式下更会从系统层禁止自动播。
+     策略：静音 + playsinline 尝试自动播；滚入视野时再 play()；并在
+     真正的激活手势上兜底播放。仍然播不了的视频，显示"轻触播放"按钮。 */
   var vids = Array.prototype.slice.call(document.querySelectorAll('video'));
+
   vids.forEach(function (v) {
     v.muted = true;
     v.defaultMuted = true;
@@ -215,12 +217,53 @@
     v.setAttribute('playsinline', '');
     v.setAttribute('webkit-playsinline', '');
     v.removeAttribute('controls');
+
+    // 每个视频角落放一个"轻触播放"兜底按钮
+    var parent = v.parentNode;
+    if (window.getComputedStyle(parent).position === 'static') {
+      parent.style.position = 'relative';
+    }
+    var tap = document.createElement('button');
+    tap.className = 'video-tap';
+    tap.type = 'button';
+    tap.setAttribute('aria-label', '播放视频');
+    tap.innerHTML = '<span>▶</span> 轻触播放';
+    parent.appendChild(tap);
+    v._tapBtn = tap;
+
+    tap.addEventListener('click', function (e) {
+      e.stopPropagation();
+      playVid(v);
+    });
+    v.addEventListener('playing', function () {
+      tap.classList.remove('show');
+    });
+    v.addEventListener('pause', function () {
+      scheduleHint(v);
+    });
   });
+
+  function syncHint(v) {
+    if (v._tapBtn) {
+      v._tapBtn.classList.toggle('show', v.paused);
+    }
+  }
+
+  function scheduleHint(v) {
+    // 给自动播放一点时间，仍是暂停状态才提示
+    setTimeout(function () {
+      syncHint(v);
+    }, 1200);
+  }
 
   function playVid(v) {
     var p = v.play();
     if (p && typeof p.catch === 'function') {
-      p.catch(function () {});
+      p.then(function () {
+        if (v._tapBtn) v._tapBtn.classList.remove('show');
+      }).catch(function () {
+        syncHint(v);
+      });
     }
   }
 
@@ -251,14 +294,14 @@
     });
   } else {
     vids.forEach(playVid);
-    window.addEventListener('scroll', kickAllVisible, { passive: true });
   }
 
-  // 兜底：用户第一次任何动作时，把当前可见的视频都踢一脚
-  ['pointerdown', 'touchstart', 'click', 'scroll'].forEach(function (ev) {
+  // 兜底：在 iOS 真正承认的激活手势上把可见视频都踢一脚
+  ['touchend', 'pointerup', 'click', 'keydown'].forEach(function (ev) {
     window.addEventListener(ev, kickAllVisible, { passive: true });
   });
   kickAllVisible();
+  vids.forEach(scheduleHint);
 
   /* ---------- 滚动浮现 ---------- */
   if ('IntersectionObserver' in window) {
